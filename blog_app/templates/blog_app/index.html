@@ -172,7 +172,7 @@ body {
             <p>{{ post.content }}</p>
         </div>
     </article>
-    {% endfor %}
+   
 
     <article class="blog-post" onclick="showPopup(2)">
         <div class="post-header">
@@ -198,14 +198,16 @@ body {
     </div>
 </div>
 
+
 <script>
     // A simple "database" for article content
+    
     const articles = {
         1: {
-            title: "First Blog Post Title",
-            author: "John Doe",
-            date: "September 28, 2025",
-            body: "This is the full content of the first blog post. It can be as long as you want and include multiple paragraphs, images, and other HTML elements. This is where the magic happens!"
+            title: "{{ post.title }}",
+            author: "{{ post.author }}",
+            date: "{{ post.time }}",
+            body: "{{ post.content }}"
         },
         2: {
             title: "Another Interesting Article",
@@ -229,6 +231,7 @@ body {
         document.getElementById('post-popup').style.display = 'none';
     }
 </script>
+ {% endfor %}
 
 </body>
 </html>
