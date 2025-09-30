@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Article - MyBlog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- General Body & Page Container --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        /* --- Navigation Bar (reused from index page) --- */
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .profile-icon {
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        /* --- Main Content Container --- */
+        .page-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Card Styling (for create form and articles list) --- */
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* --- Form Styling --- */
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 200px;
+        }
+
+        .btn-submit {
+            width: auto;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- Existing Articles Section --- */
+        .article-list h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            color: #333;
+        }
+
+        .article-list .article-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .article-list .article-item:hover {
+            transform: translateY(-3px);
+            background-color: #f1f1f1;
+        }
+
+        .article-title {
+            font-size: 18px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .article-meta {
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">MyBlog</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'user_acc' %}"><i class="fas fa-user-circle profile-icon"></i></a></li>
+        </ul>
+    </header>
+
+    <main class="page-container">
+        <section class="card">
+            <h2>Create New Article</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Article Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Article Content</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Publish Article</button>
+            </form>
+        </section>
+
+        <section class="card article-list">
+            <h3>Your Existing Articles</h3>
+            <article class="article-item">
+                <h4 class="article-title"></h4>
+                <div class="article-meta"></div>
+            </article>
+            <article class="article-item">
+                <h4 class="article-title"></h4>
+                <div class="article-meta"></div>
+            </article>
+            <article class="article-item">
+                <h4 class="article-title"></h4>
+                <div class="article-meta"></div>
+            </article>
+            </section>
+    </main>
+</body>
+</html>
