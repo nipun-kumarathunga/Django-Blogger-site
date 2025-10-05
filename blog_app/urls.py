@@ -7,3 +7,6 @@ urlpatterns = [
     path("", views.blog, name="index"),
     path("user", views.user, name="user_acc")
 ]
+
+
+    

@@ -6,7 +6,7 @@
     <title>nipun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- General Body & Page Container --- */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -14,7 +14,6 @@ body {
     background-color: #f0f2f5;
 }
 
-/* --- Navigation Bar --- */
 .navbar {
     background-color: #ffffff;
     padding: 15px 30px;
@@ -59,15 +58,15 @@ body {
     color: #007bff;
 }
 
-/* --- Article Grid Layout --- */
+
 .blog-container {
     display: grid;
-    /* This creates a responsive grid of 2-4 columns */
+
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     max-width: 900px;
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 /* --- Individual Article Card --- */
@@ -150,9 +149,7 @@ body {
 <header class="navbar">
     <a href="#" class="logo">MyBlog</a>
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="{% url 'user_acc' %}"><i class="fas fa-user-circle profile-icon"></i></a></li>
     </ul>
 </header>
@@ -194,12 +191,7 @@ body {
             date: "{{ post.time }}",
             body: "{{ post.content }}"
         },
-        2: {
-            title: "Another Interesting Article",
-            author: "Jane Smith",
-            date: "September 27, 2025",
-            body: "Here is the full content of the second article. It's a great example of how a pop-up modal can be used to show more information without navigating to a new page. The user stays on the index page, which is great for user experience."
-        }
+        
     };
 
     function showPopup(articleId) {
