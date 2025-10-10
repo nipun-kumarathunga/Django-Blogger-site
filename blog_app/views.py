@@ -46,6 +46,8 @@ def user(request):
     if request.method == "POST":
         title = request.POST.get("title")
         content = request.POST.get("content")
-        Post.objects.create(title=title, content=content, author=request.user)
+        image = request.FILES.get("image")
+        Post.objects.create(title=title, content=content,
+                            image=image, author=request.user)
 
     return render(request, "blog_app/user.html")

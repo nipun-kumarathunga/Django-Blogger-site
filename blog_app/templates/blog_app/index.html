@@ -61,6 +61,7 @@ body {
 
 .blog-container {
     display: grid;
+    
 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -72,11 +73,16 @@ body {
 /* --- Individual Article Card --- */
 .blog-post {
     background-color: #ffffff;
+    overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+     width: 500px; 
+    height: 500px;
+    border: 1px solid #ccc;
+    
 }
 
 .blog-post:hover {
@@ -85,7 +91,7 @@ body {
 
 .post-title {
     color: #333;
-    font-size: 20px; /* Adjusted for better fit in grid */
+    font-size: 20px; 
     margin-top: 0;
 }
 
@@ -104,7 +110,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- Pop-up Modal --- */
+
 .popup-overlay {
     display: flex;
     justify-content: center;
@@ -116,7 +122,7 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 .popup-content {
@@ -128,7 +134,7 @@ body {
     max-width: 700px;
     position: relative;
     max-height: 80vh;
-    overflow-y: auto; /* Allows scrolling for long articles */
+    overflow-y: auto; 
 }
         
 .close-button {
@@ -159,6 +165,9 @@ body {
     {% for post in posts %}
     <article class="blog-post" onclick="showPopup(1)">
         <div class="post-header">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="image" width="500" height="500">
+            {% endif %}
             <h2 class="post-title">{{post.title}}</h2>
             <div class="post-meta">
                 <span class="post-author">{{post.author}}</span>
@@ -182,7 +191,7 @@ body {
 
 
 <script>
-    // A simple "database" for article content
+    
     
     const articles = {
         1: {

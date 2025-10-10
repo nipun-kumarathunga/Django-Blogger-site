@@ -183,16 +183,21 @@
     <main class="page-container">
         <section class="card">
             <h2>Create New Article</h2>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="title">Article Title</label>
                     <input type="text" id="title" name="title" required>
                 </div>
                 <div class="form-group">
+                    <label for="content">Image</label>
+                    <input type="file" name="image">
+                </div>
+                <div class="form-group">
                     <label for="content">Article Content</label>
                     <textarea id="content" name="content" required></textarea>
                 </div>
+
                 <button type="submit" class="btn-submit">Publish Article</button>
             </form>
         </section>
